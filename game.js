@@ -37,3 +37,35 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 }
+
+// game function that plays a best of 5 rounds of rock paper scissors
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+  for (let i = 0; i < 5; i++) {
+    const playerSelection = prompt("Rock, Paper, or Scissors?");
+    const computerSelection = getComputerChoice();
+    const result = playRound(playerSelection, computerSelection);
+    console.log(result);
+    if (result.includes("win")) {
+      playerScore++;
+      if (playerScore === 3) {
+        break;
+      }
+    } else if (result.includes("lose")) {
+      computerScore++;
+      if (computerScore === 3) {
+        break;
+      }
+    }
+  }
+  if (playerScore > computerScore) {
+    console.log("You win the game!");
+  } else if (playerScore < computerScore) {
+    console.log("You lost the game!");
+  } else {
+    console.log("It's a tie!");
+  }
+}
+
+game();
